@@ -1,6 +1,6 @@
 [paths]
 source =
-    {{library_name}}/
+    twined-server/
 
 [run]
 omit =

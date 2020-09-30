@@ -14,7 +14,7 @@ Your license here.
 Third Party Libraries
 =====================
 
-**{{library_name}* includes or is linked against the following third party libraries:
+**twined-server** includes or is linked against the following third party libraries:
 
 Stuff here.
 

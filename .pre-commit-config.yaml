@@ -1,4 +1,4 @@
-exclude: 'build|docs|node_modules|.git|.tox|dist|docs|{{library_name}}.egg-info'
+exclude: 'build|docs|node_modules|.git|.tox|dist|docs|twined-server.egg-info'
 default_stages: [commit]
 fail_fast: true
 default_language_version:

@@ -1,8 +1,8 @@
 <!--- The following badges don't work because they're templated... uncomment when filled out
-[![PyPI version](https://badge.fury.io/py/{{library_name}}.svg)](https://badge.fury.io/py/{{library_name}})
-[![Build Status](https://travis-ci.{{com_or_org}}/{{travis_username}}/{{library_name}}.svg?branch=master)](https://travis-ci.{{com_or_org}}/{{travis_username}}/{{library_name}})
-[![codecov](https://codecov.io/gh/{{codecov_username}}/{{library_name}}/branch/master/graph/badge.svg)](https://codecov.io/gh/{{codecov_username}}/{{library_name}})
-[![Documentation Status](https://readthedocs.org/projects/{{library_name}}/badge/?version=latest)](https://{{library_name}}.readthedocs.io/en/latest/?badge=latest)
+[![PyPI version](https://badge.fury.io/py/twined-server.svg)](https://badge.fury.io/py/twined-server)
+[![Build Status](https://travis-ci.com/octue/twined-server.svg?branch=master)](https://travis-ci.com/octue/twined-server)
+[![codecov](https://codecov.io/gh/thclark/twined-server/branch/master/graph/badge.svg)](https://codecov.io/gh/thclark/twined-server)
+[![Documentation Status](https://readthedocs.org/projects/twined-server/badge/?version=latest)](https://twined-server.readthedocs.io/en/latest/?badge=latest)
 --->
 
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
@@ -22,14 +22,8 @@ A github template for an up to date python library, featuring:
 
 ## Developer notes
 
-**Documentation for use of the library is [here](https://{{library_name}}.readthedocs.io). You don't need to pay attention to the following unless you plan to develop {{library_name}} itself.**
+**Documentation for use of the library is [here](https://twined-server.readthedocs.io). You don't need to pay attention to the following unless you plan to develop twined-server itself.**
 
-### Getting started
-
-1. Click 'use this template' to the top right, and away you go.
-2. Search for `{{` in your new repository. Do search and replace for the various terms - it's obvious what they are, like replace `{{github_username}}` with your github username!
-3. Set up the license you need in `LICENSE`.
-4. If you need to deploy to pypi, you have to do the first deploy manually - travis can't do that for you. [See the packaging instructions](https://packaging.python.org/tutorials/distributing-packages/#uploading-your-project-to-pypi).
 
 ### Pre-Commit
 
@@ -69,11 +63,11 @@ pre-commit run build-docs -v
 - Please raise an issue on the board (or add your $0.02 to an existing issue) so the maintainers know
 what's happening and can advise / steer you.
 
-- Create a fork of {{library_name}}, undertake your changes on a new branch, (see `.pre-commit-config.yaml` for branch naming conventions). To run tests and make commits,
+- Create a fork of twined-server, undertake your changes on a new branch, (see `.pre-commit-config.yaml` for branch naming conventions). To run tests and make commits,
 you'll need to do something like:
 ```
 git clone <your_forked_repo_address>    # fetches the repo to your local machine
-cd {{library_name}}                     # move into the repo directory
+cd twined-server                     # move into the repo directory
 pyenv virtualenv 3.6.9 myenv            # Makes a virtual environment for you to install the dev tools into. Use any python >= 3.6
 pyend activate myenv                    # Activates the virtual environment so you don't screw up other installations
 pip install -r requirements-dev.txt     # Installs the testing and code formatting utilities
@@ -83,7 +77,7 @@ tox                                     # Runs the tests with coverage. NB you c
 
 - Adopt a Test Driven Development approach to implementing new features or fixing bugs.
 
-- Ask the `{{library_name}}` maintainers *where* to make your pull request. We'll create a version branch, according to the
+- Ask the `twined-server` maintainers *where* to make your pull request. We'll create a version branch, according to the
 roadmap, into which you can make your PR. We'll help review the changes and improve the PR.
 
 - Once checks have passed, test coverage of the new code is >=95%, documentation is updated and the Review is passed, we'll merge into the version branch.

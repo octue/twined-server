@@ -10,7 +10,7 @@ API
 Power Curve
 ===========
 
-.. automodule:: {{library_name}}.example_module
+.. automodule:: twined-server.example_module
     :members:
 
 
@@ -19,5 +19,5 @@ Power Curve
 Exceptions
 ==========
 
-.. automodule:: {{library_name}}.exceptions
+.. automodule:: twined-server.exceptions
     :members:

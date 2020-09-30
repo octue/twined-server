@@ -50,8 +50,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'{{library_name}}'
-copyright = u'{{copyright}}'
+project = u'twined-server'
+copyright = u'Octue Ltd'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -114,7 +114,7 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-html_title = "{{library_name}}: Short Description"
+html_title = "twined-server: Short Description"
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 # html_short_title = None
@@ -193,8 +193,8 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', '{{library_name}}.tex', u'{{library_name}}',
-   u'{{library_author}}', 'manual'),
+  ('index', 'twined-server.tex', u'twined-server',
+   u'thclark', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -223,8 +223,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', '{{library_name}}', u'{{library_name}}',
-     [u'{{library_author}}'], 1)
+    ('index', 'twined-server', u'twined-server',
+     [u'thclark'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -237,8 +237,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', '{{library_name}}', u'{{library_name}}',
-   u'{{library_author}}', '{{library_name}}', '{{library_description}}',
+  ('index', 'twined-server', u'twined-server',
+   u'thclark', 'twined-server', 'Server for applications based on twined, using Daphne and Django',
    'Miscellaneous'),
 ]
 

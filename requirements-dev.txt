@@ -1,26 +1,37 @@
 # These requirements are for development and test of the library only
 
-# Library dependencies should be specified in setup.py with as wide a
-# version range as possible, for maximum compatibility with other tools
+# Actual dependencies should be specified in requirements.txt
+-r requirements.txt
 
-# Testing
-# ------------------------------------------------------------------------------
-tox
-pluggy
+# DEVOPS & DRIVERS
+# ----------------
 
-# Code quality
+
+# TESTING
 # ------------------------------------------------------------------------------
+# pytest is recommended by django channels for async testing
+# see https://channels.readthedocs.io/en/latest/topics/testing.html
+pytest==5.4.3  # https://github.com/pytest-dev/pytest
+pytest-sugar==0.9.4  # https://pivotfinland.com/pytest-sugar/
+pytest-django==3.9.0  # https://github.com/pytest-dev/pytest-django
+pytest-asyncio==0.14.0  # https://github.com/pytest-dev/pytest-asyncio
+
+
+# DJANGO HELPERS
+# ------------------------------------------------------------------------------
+django-debug-toolbar==2.2  # https://github.com/jazzband/django-debug-toolbar
+django-extensions==3.0.3  # https://github.com/django-extensions/django-extensions
+
+
+# CODE QUALITY
+# ------------------------------------------------------------------------------
+
+coverage==5.2.1  # https://github.com/nedbat/coveragepy
+django-coverage-plugin==1.8.0  # https://github.com/nedbat/django_coverage_plugin
 flake8==3.8.3  # https://github.com/PyCQA/flake8
 flake8-isort==3.0.1  # https://github.com/gforcada/flake8-isort
 black==19.10b0  # https://github.com/ambv/black
-pre-commit  # https://github.com/pre-commit/pre-commit
-
-
-# Pre-deploy checks
-# ------------------------------------------------------------------------------
-setuptools
-wheel
-twine  # <---- nothing to do with the twined library!
+pre-commit==2.6.1  # https://github.com/pre-commit/pre-commit
 
 
 # Building documentation

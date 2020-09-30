@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+# We collect the static on start here, which we probably wouldn't want in production but it makes life easier
+# in development, since whitenoise gets run to find static files and you face any problems early on.
+python manage.py collectstatic --no-input
+
+python manage.py runserver 0.0.0.0:8000

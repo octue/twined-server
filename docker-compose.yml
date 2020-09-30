@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  web: &django
+    image: octue/twined-server
+    container_name: daphne
+    build:
+        context: .
+        dockerfile: ./compose/local/django/Dockerfile
+    command: /start
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
+    environment:
+      - DJANGO_SETTINGS_MODULE=backend.settings.local
+      - DJANGO_READ_DOT_ENV_FILE=0  # Set to off because we don't want our env vars baked into images
+    env_file:
+      - ./.env

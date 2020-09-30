@@ -1,0 +1,32 @@
+# System, cache and editor files
+**/__pycache__
+**/.DS_Store
+.coveragerc
+.editorconfig
+.idea
+app.json
+branding.pdf
+heroku_local.sh
+locustfile.py
+Procfile
+README.md
+run_flower.sh
+runtime.txt
+setup.cfg
+setup.py
+
+# Never bake in environment variables
+.env
+.env*
+google_credentials.json
+
+# Don't bake in compose data and scripts (scripts are copied to appropriate destinations)
+compose/data
+
+# Build JS in the image, don't use any local installs present
+build
+node_modules
+
+# Don't bake django staticfiles into the image, these will be collected
+static_files
+media_files

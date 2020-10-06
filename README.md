@@ -1,17 +1,18 @@
-<!--- The following badges don't work because they're templated... uncomment when filled out
-[![PyPI version](https://badge.fury.io/py/twined-server.svg)](https://badge.fury.io/py/twined-server)
 [![Build Status](https://travis-ci.com/octue/twined-server.svg?branch=master)](https://travis-ci.com/octue/twined-server)
 [![codecov](https://codecov.io/gh/thclark/twined-server/branch/master/graph/badge.svg)](https://codecov.io/gh/thclark/twined-server)
 [![Documentation Status](https://readthedocs.org/projects/twined-server/badge/?version=latest)](https://twined-server.readthedocs.io/en/latest/?badge=latest)
---->
-
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 [![black-girls-code](https://img.shields.io/badge/black%20girls-code-f64279.svg)](https://www.blackgirlscode.com/)
 
 
-# Python Library Template
-A github template for an up to date python library, featuring:
+# Twined Server
+
+A pre-configured server framework, based on django, allowing deployment of twine-based data services.
+
+## Developer notes
+
+Development features:
  - black style
  - sphinx docs with some examples and automatic build
  - pre-commit hooks
@@ -19,10 +20,6 @@ A github template for an up to date python library, featuring:
  - tox tests
  - travis ci + cd
  - code coverage
-
-## Developer notes
-
-**Documentation for use of the library is [here](https://twined-server.readthedocs.io). You don't need to pay attention to the following unless you plan to develop twined-server itself.**
 
 
 ### Pre-Commit

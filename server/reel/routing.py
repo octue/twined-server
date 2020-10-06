@@ -1,10 +1,13 @@
+from channels.routing import URLRouter
 from django.urls import path
 
-from . import consumers
+from .consumers import AnalysisConsumer, ServiceConsumer
 
 
-# from django.urls import path, re_path
-
-websocket_urlpatterns = [
-    path("ws/twined/<uuid:room_name>/", consumers.TwinedConsumer),
-]
+router = URLRouter(
+    [
+        path(r"ws/service/", ServiceConsumer),
+        path(r"ws/analyses/", AnalysisConsumer),
+        path(r"ws/analyses/<uuid:analysis_id>/", AnalysisConsumer),
+    ]
+)

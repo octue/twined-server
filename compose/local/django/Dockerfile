@@ -57,14 +57,20 @@ RUN pyenv update \
     && pip install --upgrade pip
 
 
-# APPLICATION DEPENDENCIES
-# ========================
+# SERVER APP DEPENDENCIES
+# =======================
 
 WORKDIR $PROJECT_ROOT
 
 COPY requirements*.txt ./
 # TODO Multistage testing so that we don't have the dev dependencies installed in the container
 RUN pip install -r requirements-dev.txt
+
+
+# APPLICATION DEPENDENCIES
+# ========================
+
+# TODO Fetch and build-in applications in their own virtual environments to run with dramatiq
 
 
 # ENTRYPOINTS AND STARTUP SCRIPTS

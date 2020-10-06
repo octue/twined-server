@@ -52,6 +52,7 @@ DEBUG = env.bool("DJANGO_DEBUG", False)
 
 INSTALLED_APPS = [
     "channels",
+    "django_dramatiq",
     "django.contrib.staticfiles",
     "reel.apps.ReelAppConfig",
 ]
@@ -199,6 +200,9 @@ def parse_redis_url(url):
         user, password = creds.split(":")
         host = f"{user}@{host}"
 
+    if password is None:
+        password = env.str("REDIS_PASSWORD", "redis_password")
+
     return host, port, user, password, db
 
 
@@ -207,14 +211,42 @@ REDIS_HOST, REDIS_PORT, REDIS_USER, REDIS_PASSWORD, REDIS_DB = parse_redis_url(R
 REDIS_LOCATION = f"{REDIS_URL}/{REDIS_DB}"
 
 
-# DJANGO CHANNELS
+# DRAMATIQ
 
+DRAMATIQ_BROKER = {
+    "BROKER": "dramatiq.brokers.redis.RedisBroker",
+    "OPTIONS": {"host": REDIS_HOST, "port": REDIS_PORT, "db": REDIS_DB, "password": REDIS_PASSWORD},
+    # "BROKER": "dramatiq.brokers.stub.StubBroker",
+    # "OPTIONS": {},
+    "MIDDLEWARE": [
+        "dramatiq.middleware.Prometheus",
+        "dramatiq.middleware.AgeLimit",
+        "dramatiq.middleware.TimeLimit",
+        "dramatiq.middleware.Callbacks",
+        "dramatiq.middleware.Retries",
+        # "django_dramatiq.middleware.DbConnectionsMiddleware",
+        # "django_dramatiq.middleware.AdminMiddleware",
+    ],
+}
+
+# # Defines which database should be used to persist Task objects when the
+# # AdminMiddleware is enabled.  The default value is "default".
+# # DRAMATIQ_TASKS_DATABASE = "default"
+
+DRAMATIQ_RESULT_BACKEND = {
+    "BACKEND": "dramatiq.results.backends.redis.RedisBackend",
+    "BACKEND_OPTIONS": {"host": REDIS_HOST, "port": REDIS_PORT, "db": REDIS_DB, "password": REDIS_PASSWORD},
+    "MIDDLEWARE_OPTIONS": {"result_ttl": 60000},
+}
+
+# DJANGO CHANNELS
 CHANNEL_LAYERS = {
+    # "default": {
+    #     "BACKEND": "channels.layers.InMemoryChannelLayer",
+    # },
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [{"address": f"redis://{REDIS_HOST}:{REDIS_PORT}", "db": REDIS_DB, "password": REDIS_PASSWORD}],
-        },
+        "CONFIG": {"hosts": [{"address": (REDIS_HOST, REDIS_PORT), "db": REDIS_DB, "password": REDIS_PASSWORD}]},
     },
 }
 
@@ -237,6 +269,7 @@ LOGGING = {
     },
 }
 
+
 # INTEGRATIONS - GOOGLE
 
 # We want GA code to be rendered in production if given
@@ -248,3 +281,7 @@ RECAPTCHA_PUBLIC_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
 RECAPTCHA_PRIVATE_KEY = "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"
 NOCAPTCHA = True
 SILENCED_SYSTEM_CHECKS = ["captcha.recaptcha_test_key_error"]
+
+
+# SET UP THE APPLICATION
+APPLICATION_PATH = env.str("APPLICATION_PATH", default="/applications/template-python-fractal")

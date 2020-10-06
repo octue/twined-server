@@ -5,8 +5,6 @@ from django.urls import reverse
 from rest_framework.test import APITestCase
 from utils import ensure_in_list
 
-from .make import MakeMethodsMixin
-
 
 # Test cases are not run over SSL so we must temporarily allow OAuthlib to work over an insecure connection
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "true"
@@ -99,7 +97,7 @@ class AuthenticationMixin:
         self.client.logout()
 
 
-class BaseTestCase(TestCase, AuthenticationMixin, AssertationMixin, MakeMethodsMixin):
+class BaseTestCase(TestCase, AuthenticationMixin, AssertationMixin):
     """A base test case for testing, inherited by all test classes
     """
 
@@ -123,7 +121,7 @@ class BaseTestCase(TestCase, AuthenticationMixin, AssertationMixin, MakeMethodsM
         self.path = str(os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", ""))
 
 
-class BaseApiTestCase(APITestCase, AuthenticationMixin, AssertationMixin, MakeMethodsMixin):
+class BaseApiTestCase(APITestCase, AuthenticationMixin, AssertationMixin):
     """A base test case for testing a REST api, inherited by all test classes
     """
 

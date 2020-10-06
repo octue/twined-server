@@ -7,6 +7,10 @@ from .base import *  # noqa:F403
 DEBUG = False
 TEMPLATES[0]["OPTIONS"]["debug"] = DEBUG
 
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
+# Note: This key only used for development! Using this key in production is insecure!
+SECRET_KEY = env("DJANGO_SECRET_KEY", default="`c}ycP0(JRg*azi<<|=8d>?vH#@xI:P?Yksdc?Zog$~WZHw|oi")
+
 
 # CACHING CONFIGURATION
 
@@ -22,3 +26,15 @@ PASSWORD_HASHERS = [
 ]
 
 TESTING = env.bool("TESTING", default=True)
+
+DRAMATIQ_BROKER = {
+    "BROKER": "dramatiq.brokers.stub.StubBroker",
+    "OPTIONS": {},
+    "MIDDLEWARE": [
+        "dramatiq.middleware.AgeLimit",
+        "dramatiq.middleware.TimeLimit",
+        "dramatiq.middleware.Callbacks",
+        "dramatiq.middleware.Pipelines",
+        "dramatiq.middleware.Retries",
+    ],
+}

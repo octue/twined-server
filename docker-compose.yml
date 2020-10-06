@@ -3,13 +3,16 @@ version: '3'
 services:
   web: &django
     image: octue/twined-server
-    container_name: daphne
+    container_name: tws_daphne
     build:
         context: .
         dockerfile: ./compose/local/django/Dockerfile
     command: /start
     volumes:
       - .:/app
+      # TODO Remove - mapping volumes allows interactive development of the application with hot reloading
+      - /Users/thc29/Source/octue/yuriy-foil:/applications/yuriy-foil
+      - /Users/thc29/Source/octue/octue-sdk-python/octue/templates/template-python-fractal:/applications/template-python-fractal
     ports:
       - 8000:8000
     environment:
@@ -17,3 +20,20 @@ services:
       - DJANGO_READ_DOT_ENV_FILE=0  # Set to off because we don't want our env vars baked into images
     env_file:
       - ./.env
+    depends_on:
+      - redis
+
+  redis:
+    image: 'docker.io/bitnami/redis:6.0-debian-10'
+    environment:
+      - REDIS_PASSWORD=redis_password  # ALLOW_EMPTY_PASSWORD=yes is recommended only for development. And maybe not even then.
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+    ports:
+      - 6379:6379
+    volumes:
+      - redis_data:/bitnami/redis/data
+    container_name: tws_redis
+
+volumes:
+  redis_data:
+    driver: local

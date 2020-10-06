@@ -8,4 +8,8 @@ set -o nounset
 # in development, since whitenoise gets run to find static files and you face any problems early on.
 python manage.py collectstatic --no-input
 
+# Run workers on the same machine as the server, we want everything wrapped in one container
+python manage.py rundramatiq -v3 --reload-use-polling &
+
+# Run the server (channels patches this to use daphne)
 python manage.py runserver 0.0.0.0:8000

@@ -52,6 +52,7 @@ DEBUG = env.bool("DJANGO_DEBUG", False)
 
 INSTALLED_APPS = [
     "channels",
+    "django_extensions",
     "django_dramatiq",
     "django.contrib.staticfiles",
     "reel.apps.ReelAppConfig",
@@ -144,7 +145,7 @@ MEDIA_URL = "/media/"
 
 ROOT_URLCONF = "app.urls"
 WSGI_APPLICATION = "app.wsgi.application"
-ASGI_APPLICATION = "app.asgi.application"
+ASGI_APPLICATION = "app.routing.application"
 
 
 # AUTH SETTINGS, PASSWORD STORAGE AND VALIDATION

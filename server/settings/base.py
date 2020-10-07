@@ -284,4 +284,4 @@ SILENCED_SYSTEM_CHECKS = ["captcha.recaptcha_test_key_error"]
 
 
 # SET UP THE APPLICATION
-APPLICATION_PATH = env.str("APPLICATION_PATH", default="/applications/template-python-fractal")
+APPLICATION_PATH = env.str("APPLICATION_PATH", default="/applications/yuriy-foil")

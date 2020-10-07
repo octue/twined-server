@@ -34,6 +34,14 @@ black  # https://github.com/ambv/black
 pre-commit==2.7.1  # https://github.com/pre-commit/pre-commit
 
 
+# ARGH
+# ------------------
+# TODO A way of resolving packages such that tasks operate in separate environments, whose requirements are installed
+#  from the app directory.
+numpy~=1.19.2
+aeropy
+
+
 # Building documentation
 # ------------------------------------------------------------------------------
 # -r docs/requirements.txt

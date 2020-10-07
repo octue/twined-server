@@ -94,9 +94,7 @@ def prune(with_volumes):
     """
     volume_flag = "-v" if with_volumes else ""
     # Flake8 has to be ignored because grep's escape characters are valid but flake thinks it's python
-    system(
-        r"docker ps -a | grep 'tws_\|twined-server_' | awk '{print $1}' | xargs docker rm %s" % volume_flag
-    )  # noqa:W605
+    system(r"docker ps -a | grep 'tws_\|twined-server_' | awk '{print $1}' | xargs docker rm %s" % volume_flag)
 
 
 @click.command()

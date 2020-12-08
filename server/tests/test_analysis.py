@@ -35,7 +35,7 @@ async def test_analysis(broker, worker):
     worker.join()
 
     # Ask it to start
-    input_data = {"input_values": json.dumps({"n_iterations": 1})}
+    input_data = {"input_values": json.dumps({"n_iterations": 1, "alpha_range": [0]})}
     await communicator.send_json_to({"action": "ask", **input_data})
     ask_response = await communicator.receive_json_from()  # noqa: F841
     # print('ASKED WITH RESPONSE:', ask_response)

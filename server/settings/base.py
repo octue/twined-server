@@ -207,7 +207,7 @@ def parse_redis_url(url):
     return host, port, user, password, db
 
 
-REDIS_URL = env("REDIS_URL", default="redis://localhost:6379")
+REDIS_URL = env("REDIS_URL", default="redis://redis:6379")
 REDIS_HOST, REDIS_PORT, REDIS_USER, REDIS_PASSWORD, REDIS_DB = parse_redis_url(REDIS_URL)
 REDIS_LOCATION = f"{REDIS_URL}/{REDIS_DB}"
 
